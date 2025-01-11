@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Factory, Github, ArrowRight, WhatsApp } from "lucide-react";
+import { Mail, Factory, Github, ArrowRight, MessageSquare } from "lucide-react";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -80,7 +80,7 @@ export function Layout({ children }: LayoutProps) {
                   onClick={handleWhatsAppClick}
                   className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
                 >
-                  <WhatsApp className="h-4 w-4" />
+                  <MessageSquare className="h-4 w-4" />
                   <span>WhatsApp</span>
                 </button>
               </div>
