@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { Mail, Factory, Github, ArrowRight, MessageSquare } from "lucide-react";
+import { useState } from "react";
+import { InstallationDialog } from "./InstallationDialog";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 export function Layout({ children }: LayoutProps) {
+  const [installDialogOpen, setInstallDialogOpen] = useState(false);
+
   const handleEmailClick = () => {
     window.location.href = "mailto:xmrtsolutions@gmail.com?subject=dApp%20Factory%20Inquiry&body=I'm%20interested%20in%20building%20a%20dApp%20on%20Polygon.";
   };
@@ -43,13 +47,13 @@ export function Layout({ children }: LayoutProps) {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Choose from our curated templates and start building your decentralized application on Polygon today.
           </p>
-          <Link
-            to="/"
+          <button
+            onClick={() => setInstallDialogOpen(true)}
             className="inline-flex items-center space-x-2 bg-polygon-primary hover:bg-polygon-primary/90 text-white px-6 py-3 rounded-lg transition-colors"
           >
             <span>Get Started</span>
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </button>
         </div>
       </header>
 
@@ -107,6 +111,11 @@ export function Layout({ children }: LayoutProps) {
           </div>
         </div>
       </footer>
+
+      <InstallationDialog 
+        open={installDialogOpen}
+        onOpenChange={setInstallDialogOpen}
+      />
     </div>
   );
 }
